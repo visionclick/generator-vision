@@ -139,13 +139,12 @@ YawaGenerator.prototype.mainStylesheet = function mainStylesheet() {
 		this.copy('_textures.scss', 'app/styles/_textures.scss');
 		this.copy('_vars.scss', 'app/styles/_vars.scss');
 
-
 		this.copy('_flex.scss', 'app/styles/lib/_flex.scss');
 		this.copy('_placeholders.scss', 'app/styles/lib/_placeholders.scss');
 		this.copy('_mixins.scss', 'app/styles/lib/_mixins.scss');
 
 		this.copy('_broswehappy.scss', 'app/styles/components/_browsehappy.scss');
-		this.copy('_styleguide.scss', 'app/styles/_styleguide.scss');
+		this.copy('_styleguide.scss', 'app/styles/pages/_styleguide.scss');
 		this.copy('_shame.scss', 'app/styles/_shame.scss');
 
 		this.copy('styleguide.hbs', 'app/templates/pages/styleguide.hbs');
@@ -165,7 +164,7 @@ YawaGenerator.prototype.mainStylesheet = function mainStylesheet() {
 		this.copy('_mixins.scss', 'app/styles/lib/_mixins.scss');
 
 		this.copy('_broswehappy.scss', 'app/styles/components/_browsehappy.scss');
-		this.copy('_styleguide.scss', 'app/styles/_styleguide.scss');
+		this.copy('_styleguide.scss', 'app/styles/pages/_styleguide.scss');
 	}
 };
 

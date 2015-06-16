@@ -161,7 +161,8 @@ module.exports = function (grunt) {
             },
             server: {
                 options: {
-                    debugInfo: true
+                    debugInfo: true,
+                    sourcemap: true
                 }
             }
         },
@@ -341,8 +342,7 @@ module.exports = function (grunt) {
                         '*.{ico,png,txt}',
                         '.htaccess',
                         'images/{,*/}*.{webp,gif}',
-                        'fonts/{,*/}*.*'<% if (compassBootstrap) { %>,
-                        'bower_components/bootstrap-sass/assets/fonts/bootstrap/*.*'<% } %><% if (groundworkCSS) { %>,
+                        'fonts/{,*/}*.*'<% if (groundworkCSS) { %>,
                         'bower_components/groundwork/fonts/**',
                         'bower_components/groundwork/images/**',
                         'bower_components/groundwork/js/libs/**'<% } %>

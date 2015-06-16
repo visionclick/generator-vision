@@ -1,12 +1,12 @@
-$icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+@charset "UTF-8";
 
+// Page vars
+@import "vars";
 
 // Core variables and mixins
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
 
-// Page vars
-@import "vars";
 
 // Reset and dependencies
 @import "bootstrap/normalize";
@@ -69,11 +69,15 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 @import "components/browsehappy";
 
 
-@import "components/shame";
-@import "helpers";
+// Pages
+@import "pages/styleguide";
+
+
+@import "shame";
 
 
 // Utility classes
+@import "helpers";
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
 

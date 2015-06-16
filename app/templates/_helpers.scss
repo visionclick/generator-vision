@@ -180,8 +180,15 @@ $half-spacing-unit : $grid-gutter-width/2;
 }
 
 
-.m-sides-auto{
+.u-center-block{
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+
+.js-cloak,.cloak {
+	display: none !important;
+	visibility: hidden !important;
+	opacity: 0 !important;
 }
