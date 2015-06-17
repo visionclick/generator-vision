@@ -425,7 +425,21 @@ module.exports = function (grunt) {
             all: {
                 rjsConfig: '<%%= yeoman.app %>/scripts/main.js'
             }
-        }<% } %>
+        }<% } %>,
+        pagespeed: {
+            options: {
+                nokey: true,
+                url: "https://developers.google.com"
+            },
+            prod: {
+                options: {
+                    url: "",
+                        locale: "en_GB",
+                        strategy: "desktop",
+                        threshold: 80
+                }
+            }
+        }
     });
 
     <% if (includeAssemble) { %>
