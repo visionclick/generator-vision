@@ -433,18 +433,39 @@ module.exports = function (grunt) {
             },
             prod: {
                 options: {
-                    url: "",
+                    url: "", // Need a public url
                         locale: "en_GB",
                         strategy: "desktop",
                         threshold: 80
                 }
             }
-        }
+        },
+        buildcontrol: {
+            options: {
+                dir: 'dist',
+            },
+            pages: {
+                options: {
+                    remote: 'git@github.com:<user>/<url>.git', // Github repo
+                        branch: 'gh-pages',
+                        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%',
+                        commit: true,
+                        push: true,
+                }
+            },
+            local: {
+                options: {
+                    remote: '../',
+                        branch: 'build'
+                }
+            }
+        },
     });
 
     <% if (includeAssemble) { %>
     grunt.loadNpmTasks('assemble'); // Doesn't follow the grunt-* naming scheme and therefor isn't loaded automatically
     <% } %>
+    grunt.registerTask('pages', ['buildcontrol:pages']);
 
     grunt.registerTask('server', function (target) {
         if (target === 'dist') {

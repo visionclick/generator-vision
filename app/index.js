@@ -25,8 +25,12 @@ var YawaGenerator = module.exports = function YawaGenerator(args, options, confi
 
 	this.on('end', function() {
 		this.installDependencies({
-			skipInstall: options['skip-install'],
-			skipMessage: options['skip-install-message']
+			bower: true,
+			npm: true,
+			skipInstall: false,
+			callback: function () {
+				console.log('Everything is ready!');
+			}
 		});
 	});
 
@@ -165,6 +169,8 @@ YawaGenerator.prototype.mainStylesheet = function mainStylesheet() {
 
 		this.copy('_broswehappy.scss', 'app/styles/components/_browsehappy.scss');
 		this.copy('_styleguide.scss', 'app/styles/pages/_styleguide.scss');
+		this.copy('_shame.scss', 'app/styles/_shame.scss');
+		this.copy('styleguide.hbs', 'app/templates/pages/styleguide.hbs');
 	}
 };
 
@@ -280,8 +286,6 @@ YawaGenerator.prototype.writeIndex = function writeIndex() {
 			}
 		}
 	}
-
-
 };
 
 // TODO(mklabs): to be put in a subgenerator like rjs:app
