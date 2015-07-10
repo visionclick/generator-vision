@@ -11,7 +11,7 @@
 // Reset and dependencies
 @import "bootstrap/normalize";
 @import "bootstrap/print";
-@import "bootstrap/glyphicons";
+//@import "bootstrap/glyphicons";
 
 // Core CSS
 @import "bootstrap/scaffolding";
@@ -62,11 +62,11 @@
 @import "textures";
 
 
-// Objects
-
-
 // Components
 @import "components/browsehappy";
+
+
+// Objects
 
 
 // Pages
@@ -77,8 +77,6 @@
 
 
 // Utility classes
-@import "helpers";
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
-
 @import "helpers";
