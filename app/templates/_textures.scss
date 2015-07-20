@@ -62,3 +62,20 @@ html, body {
 textarea {
 	max-width: 100%;
 }
+
+
+/// LINKS
+
+@mixin link--white(){
+	a {
+		color: white;
+		transition: color 0.15s ease;
+		&:hover {
+			color: darken(white,15%);
+		}
+	}
+}
+
+a.link--white{
+	@include link--white();
+}
