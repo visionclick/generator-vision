@@ -186,7 +186,8 @@ YawaGenerator.prototype.mainStylesheet = function mainStylesheet() {
 		this.copy('_broswehappy.scss', 'app/styles/components/_browsehappy.scss');
 		this.copy('_styleguide.scss', 'app/styles/pages/_styleguide.scss');
 		this.copy('_shame.scss', 'app/styles/_shame.scss');
-		this.copy('_styleguide-blam.hbs', 'app/templates/pages/styleguide.hbs');
+
+		this.copy('styleguide-blank.hbs', 'app/templates/pages/styleguide.hbs');
 	}
 };
 
