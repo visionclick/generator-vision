@@ -3,6 +3,7 @@
 // Vars
 @import "vars";
 
+@import "normalize.css/normalize.css";
 
 // Lib
 @import "lib/flex";
@@ -21,5 +22,5 @@
 @import "components/browsehappy";
 
 
-@import "components/shame";
+@import "shame";
 @import "helpers";

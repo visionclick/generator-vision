@@ -4,10 +4,12 @@
 	"dependencies": { <%
 		if (compassBootstrap) { %>
 			"bootstrap-sass": "~3.3.4", <%
-		} %> <%
-		if (groundworkCSS) { %>
-			"groundwork": "^2.0.2", <%
-		} %> <%
+		} %>
+		<%
+		if (!compassBootstrap) { %>
+		"bootstrap-sass": "~3.3.4", <%
+		} %>
+		<%
 		if (includeRequireJS) { %>
 			"requirejs": "^2.1.8", <%
 		} %> <%

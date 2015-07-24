@@ -76,7 +76,20 @@ YawaGenerator.prototype.askFor = function askFor() {
 			value: 'includeAssemble',
 			checked: true
 		}]
-	}];
+	},
+	{
+		type: 'checkbox',
+		name: 'form',
+		message: 'Need a form?',
+		choices: [ {
+			name: 'Yes',
+			value: true
+		}, {
+			name: 'Nope',
+			value: false
+		}]
+	}
+	];
 
 	this.prompt(prompts, function(answers) {
 		var features = answers.features;
@@ -160,6 +173,7 @@ YawaGenerator.prototype.mainStylesheet = function mainStylesheet() {
 		this.copy('groundwork_settings.scss', 'app/styles/_settings.scss');
 		this.copy('groundwork_app.scss', 'app/styles/_app.scss');
 	} else {
+		this.copy('_vars.scss', 'app/styles/_vars.scss');
 		this.copy('main.scss', 'app/styles/main.scss');
 		this.copy('_helpers.scss', 'app/styles/_helpers.scss');
 		this.copy('_textures.scss', 'app/styles/_textures.scss');
