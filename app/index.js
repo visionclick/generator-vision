@@ -70,7 +70,7 @@ YawaGenerator.prototype.askFor = function askFor() {
 		}, {
 			name: 'Modernizr',
 			value: 'includeModernizr',
-			checked: true
+			checked: false
 		}, {
 			name: 'Assemble',
 			value: 'includeAssemble',
@@ -144,6 +144,7 @@ YawaGenerator.prototype.mainStylesheet = function mainStylesheet() {
 		this.copy('_vars.scss', 'app/styles/_vars.scss');
 
 		this.copy('_flex.scss', 'app/styles/lib/_flex.scss');
+		this.copy('_animations.scss', 'app/styles/lib/_animations.scss');
 		this.copy('_placeholders.scss', 'app/styles/lib/_placeholders.scss');
 		this.copy('_mixins.scss', 'app/styles/lib/_mixins.scss');
 
@@ -164,6 +165,7 @@ YawaGenerator.prototype.mainStylesheet = function mainStylesheet() {
 		this.copy('_textures.scss', 'app/styles/_textures.scss');
 
 		this.copy('_flex.scss', 'app/styles/lib/_flex.scss');
+		this.copy('_animations.scss', 'app/styles/lib/_animations.scss');
 		this.copy('_placeholders.scss', 'app/styles/lib/_placeholders.scss');
 		this.copy('_mixins.scss', 'app/styles/lib/_mixins.scss');
 
@@ -182,10 +184,7 @@ YawaGenerator.prototype.writeIndex = function writeIndex() {
 		this.indexFile = this.readFileAsString(path.join(this.sourceRoot(), 'index.hbs'));
 		this.indexFile = this.engine(this.indexFile, this);
 
-		if (!this.includeRequireJS) {
-			this.layoutFile = this.appendScripts(this.layoutFile, 'scripts/main.js', [
-				'scripts/main.js'
-			]);
+		if (!this.includeRequireJS && !this.compassBootstrap) {
 
 			//this.layoutFile = this.appendFiles({
 			//	html: this.layoutFile,
@@ -194,6 +193,12 @@ YawaGenerator.prototype.writeIndex = function writeIndex() {
 			//	sourceFileList: ['scripts/hello.js'],
 			//	searchPath: '.tmp'
 			//});
+
+			// wire default
+			this.layoutFile = this.appendScripts(this.layoutFile, 'scripts/main.js', [
+				'scripts/styleguide.js',
+				'scripts/main.js'
+			]);
 		}
 
 		if (!this.includeRequireJS) {
@@ -213,6 +218,12 @@ YawaGenerator.prototype.writeIndex = function writeIndex() {
 					'bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js',
 					'bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js'
 				]);
+				// wire default
+				this.layoutFile = this.appendScripts(this.layoutFile, 'scripts/main.js', [
+					'scripts/styleguide.js',
+					'scripts/main.js'
+				]);
+
 			} else if (this.groundworkCSS) {
 				// wire Groundwork plugins
 				this.layoutFile = this.appendScripts(this.layoutFile, 'scripts/plugins.js', [
@@ -235,17 +246,18 @@ YawaGenerator.prototype.writeIndex = function writeIndex() {
 		this.indexFile = this.engine(this.indexFile, this);
 
 		if (!this.includeRequireJS) {
-			this.indexFile = this.appendScripts(this.indexFile, 'scripts/main.js', [
+			this.layoutFile = this.appendScripts(this.layoutFile, 'scripts/main.js', [
+				'scripts/styleguide.js',
 				'scripts/main.js'
 			]);
 
-			this.indexFile = this.appendFiles({
-				html: this.indexFile,
-				fileType: 'js',
-				optimizedPath: 'scripts/coffee.js',
-				sourceFileList: ['scripts/hello.js'],
-				searchPath: '.tmp'
-			});
+			//this.indexFile = this.appendFiles({
+			//	html: this.indexFile,
+			//	fileType: 'js',
+			//	optimizedPath: 'scripts/coffee.js',
+			//	sourceFileList: ['scripts/hello.js'],
+			//	searchPath: '.tmp'
+			//});
 		}
 
 		if (!this.includeRequireJS) {

@@ -66,16 +66,16 @@ textarea {
 
 /// LINKS
 
-@mixin link--white(){
+@mixin link--color($color: white, $hcolor: $color, $percentage: 15%, $transition: color 0.15s ease){
 	a {
-		color: white;
-		transition: color 0.15s ease;
+		color: $color;
+		transition: $transition;
 		&:hover {
-			color: darken(white,15%);
+			color: darken($color,$percentage);
 		}
 	}
 }
 
 a.link--white{
-	@include link--white();
+	@include link--color();
 }
