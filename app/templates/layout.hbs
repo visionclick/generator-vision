@@ -34,9 +34,12 @@
 
 {{> body }}
 
+<div class="cookie_container"></div>
+
 <!-- build:js scripts/vendor.js -->
 <!-- bower:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/cookieconsent2/cookieconsent.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -56,6 +59,18 @@
     }(window, document, 'script', 'ga'));
     ga('create', 'UA-XXXXX-X');
     ga('send', 'pageview');
+</script>
+
+<script>
+    window.cookieconsent_options = {
+        "message": "Solicitamos su permiso para obtener datos estadísticos de su navegación en esta web, " +
+        "en cumplimiento del Real Decreto-ley 13/2012. Si continúa navegando consideramos que acepta el " +
+        "uso de cookies.",
+        "dismiss": "OK",
+        "learnMore": "Más información",
+        "link": "#",
+        "theme": "dark-bottom"
+    };
 </script>
 
 </body>
