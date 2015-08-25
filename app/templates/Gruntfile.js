@@ -30,11 +30,11 @@ module.exports = function (grunt) {
             },
             compass: {
                 files: ['<%%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-                tasks: ['compass:server', 'autoprefixer']
+                tasks: ['compass:server', 'postcss']
             },
             styles: {
                 files: ['<%%= yeoman.app %>/styles/{,*/}*.css'],
-                tasks: ['copy:styles', 'autoprefixer']
+                tasks: ['copy:styles', 'postcss']
             },
             data: {
                 files: [<% if (includeAssemble) { %>
@@ -166,9 +166,12 @@ module.exports = function (grunt) {
                 }
             }
         },
-        autoprefixer: {
+        postcss: {
             options: {
-                browsers: ['last 1 version']
+                map: true,
+                    processors: [
+                    require('autoprefixer-core')({browsers: ['last 4 versions']})
+                ]
             },
             dist: {
                 files: [{
@@ -475,7 +478,7 @@ module.exports = function (grunt) {
         grunt.task.run([
 			'clean:server',
 			'concurrent:server',
-			'autoprefixer',<% if (includeRequireJS) { %>
+			'postcss',<% if (includeRequireJS) { %>
 			'copy:scripts',<% } %><% if (includeAssemble) { %>
 			'assemble',<% } %>
 			'compass:server',
@@ -488,7 +491,7 @@ module.exports = function (grunt) {
     grunt.registerTask('test', [
         'clean:server',
         'concurrent:test',
-        'autoprefixer',
+        'postcss',
         'connect:test',<% if (testFramework === 'mocha') { %>
         'mocha'<% } else if (testFramework === 'jasmine') { %>
         'jasmine'<% } %>
@@ -499,7 +502,7 @@ module.exports = function (grunt) {
         'assemble',<% } %>
         'useminPrepare',
         'concurrent:dist',
-        'autoprefixer',<% if (includeRequireJS) { %>
+        'postcss',<% if (includeRequireJS) { %>
         'copy:scripts',
         'requirejs',<% } %>
         'concat',
