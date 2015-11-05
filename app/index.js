@@ -23,7 +23,7 @@ var YawaGenerator = module.exports = function YawaGenerator(args, options, confi
 
 	this.mainCoffeeFile = 'console.log "\'Allo from CoffeeScript!"';
 
-	this.on('end', function() {
+	this.on('end', function () {
 		this.installDependencies({
 			bower: true,
 			npm: true,
@@ -52,7 +52,7 @@ YawaGenerator.prototype.askFor = function askFor() {
 		type: 'list',
 		name: 'uiframework',
 		message: 'Yo Homie! What framework you want?',
-		choices: [ {
+		choices: [{
 			name: 'Bootstrap',
 			value: 'bootstrap'
 		}, {
@@ -77,21 +77,21 @@ YawaGenerator.prototype.askFor = function askFor() {
 			checked: true
 		}]
 	},
-	{
-		type: 'checkbox',
-		name: 'form',
-		message: 'Need a form?',
-		choices: [ {
-			name: 'Yes',
-			value: true
-		}, {
-			name: 'Nope',
-			value: false
-		}]
-	}
+		{
+			type: 'checkbox',
+			name: 'form',
+			message: 'Need a form?',
+			choices: [{
+				name: 'Yes',
+				value: true
+			}, {
+				name: 'Nope',
+				value: false
+			}]
+		}
 	];
 
-	this.prompt(prompts, function(answers) {
+	this.prompt(prompts, function (answers) {
 		var features = answers.features;
 		var uiframework = answers.uiframework;
 
