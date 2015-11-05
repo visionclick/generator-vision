@@ -79,11 +79,11 @@ YawaGenerator.prototype.askFor = function askFor() {
 	},
 		{
 			type: 'checkbox',
-			name: 'form',
-			message: 'Need a form?',
+			name: 'includeUncss',
+			message: 'Need uncss?',
 			choices: [{
 				name: 'Yes',
-				value: true
+				value: 'includeUncss'
 			}, {
 				name: 'Nope',
 				value: false
@@ -104,6 +104,7 @@ YawaGenerator.prototype.askFor = function askFor() {
 		this.compassBootstrap = (uiframework === 'bootstrap');
 		this.groundworkCSS = (uiframework === 'groundwork');
 		this.includeRequireJS = hasFeature('includeRequireJS');
+		this.includeUncss = hasFeature('includeUncss');
 		this.includeModernizr = hasFeature('includeModernizr');
 		this.includeAssemble = hasFeature('includeAssemble');
 

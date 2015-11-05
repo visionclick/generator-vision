@@ -17,6 +17,7 @@
 			"modernizr": "^2.6.2", <%
 		} %>
 		"jquery": "^1.10.2",
+		"normalize-css": "normalize.css#~3.0.3"
 		"lt-ie-9": "~0.1.0",
 		"cookieconsent2": "~1.0.4"
 		},

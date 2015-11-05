@@ -462,7 +462,26 @@ module.exports = function (grunt) {
                         branch: 'build'
                 }
             }
-        },
+        }<% if (includeUncss) { %>,
+		uncss: {
+			dist: {
+				options: {
+					ignore: ['.collapse','.collapsing','.modal-scrollbar-measure','.modal-open .modal',
+						'.modal-backdrop','.fade','.modal-open','.in','.is-adding','.is-open','#added_at_runtime',
+						'input[type=number]::-webkit-outer-spin-button',
+						'input[type=number]::-webkit-inner-spin-button','.fade.in','.modal-backdrop.in',
+						'.modal.in .modal-dialog','.help-block','.with-errors',
+						'.o-form .has-error .help-block.with-errors','.has-error .help-block',
+						'.o-form .has-error .help-block.with-errors li','.o-form .has-error .help-block.with-errors .list-unstyled',
+						'.alert','.alert-danger','.alert-success','.o-form__message','.disabled'], timeout   : 4000
+				},
+				files: {
+					'<%= yeoman.dist %>/styles/main.css': [
+						'<%= yeoman.dist %>/index.html'
+					]
+				}
+			}
+		}<% } %>,
     });
 
     <% if (includeAssemble) { %>
@@ -512,7 +531,8 @@ module.exports = function (grunt) {
         'copy:dist',
         'bless:dist',
         //'rev',
-        'usemin',
+        'usemin',<% if (includeUncss) { %>
+		'uncss',<% } %>
         'htmlmin:deploy'
     ]);
 
