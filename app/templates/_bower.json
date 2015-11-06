@@ -1,25 +1,20 @@
 {
 	"name": "<%= _.slugify(appname) %>",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"dependencies": { <%
 		if (compassBootstrap) { %>
 			"bootstrap-sass": "~3.3.4", <%
-		} %>
-		<%
-		if (!compassBootstrap) { %>
-		"bootstrap-sass": "~3.3.4", <%
-		} %>
-		<%
-		if (includeRequireJS) { %>
+		} %><%if (zurbFoundation) { %>
+			"foundation": "~5.4.7", <%
+		} %><%if (includeRequireJS) { %>
 			"requirejs": "^2.1.8", <%
 		} %> <%
 		if (includeModernizr) { %>
 			"modernizr": "^2.6.2", <%
 		} %>
-		"jquery": "^1.10.2",
-		"normalize-css": "normalize.css#~3.0.3"
-		"lt-ie-9": "~0.1.0",
-		"cookieconsent2": "~1.0.4"
+			"jquery": "^1.10.2",
+			"lt-ie-9": "~0.1.0",
+			"cookieconsent2": "~1.0.4"
 		},
 	"devDependencies": {}
 }

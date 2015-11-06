@@ -53,8 +53,11 @@ YawaGenerator.prototype.askFor = function askFor() {
 		name: 'uiframework',
 		message: 'Yo Homie! What framework you want?',
 		choices: [{
-			name: 'Bootstrap',
+			name: 'Bootstrap 4',
 			value: 'bootstrap'
+		}, {
+			name: 'Foundation 5',
+			value: 'foundation'
 		}, {
 			name: 'None',
 			value: false
@@ -102,7 +105,7 @@ YawaGenerator.prototype.askFor = function askFor() {
 		// manually deal with the response, get back and store the results.
 		// we change a bit this way of doing to automatically do this in the self.prompt() method.
 		this.compassBootstrap = (uiframework === 'bootstrap');
-		this.groundworkCSS = (uiframework === 'groundwork');
+		this.zurbFoundation = (uiframework === 'foundation');
 		this.includeRequireJS = hasFeature('includeRequireJS');
 		this.includeUncss = hasFeature('includeUncss');
 		this.includeModernizr = hasFeature('includeModernizr');
@@ -169,10 +172,23 @@ YawaGenerator.prototype.mainStylesheet = function mainStylesheet() {
 		this.copy('styleguide.hbs', 'app/templates/pages/styleguide.hbs');
 		this.copy('styleguide.js', 'app/scripts/styleguide.js');
 
-	} else if (this.groundworkCSS) {
-		this.copy('groundwork.scss', 'app/styles/main.scss');
-		this.copy('groundwork_settings.scss', 'app/styles/_settings.scss');
-		this.copy('groundwork_app.scss', 'app/styles/_app.scss');
+	} else if (this.zurbFoundation) {
+		this.copy('foundation.scss', 'app/styles/main.scss');
+		this.copy('_helpers.scss', 'app/styles/_helpers.scss');
+		this.copy('_textures.scss', 'app/styles/_textures.scss');
+		this.copy('_vars.scss', 'app/styles/_vars.scss');
+
+		this.copy('_flex.scss', 'app/styles/lib/_flex.scss');
+		this.copy('_animations.scss', 'app/styles/lib/_animations.scss');
+		this.copy('_placeholders.scss', 'app/styles/lib/_placeholders.scss');
+		this.copy('_mixins.scss', 'app/styles/lib/_mixins.scss');
+
+		this.copy('_broswehappy.scss', 'app/styles/components/_browsehappy.scss');
+		this.copy('_styleguide.scss', 'app/styles/pages/_styleguide.scss');
+		this.copy('_shame.scss', 'app/styles/_shame.scss');
+
+		this.copy('styleguide-foundation.hbs', 'app/templates/pages/styleguide.hbs');
+		this.copy('styleguide.js', 'app/scripts/styleguide.js');
 	} else {
 		this.copy('_vars.scss', 'app/styles/_vars.scss');
 		this.copy('main.scss', 'app/styles/main.scss');
@@ -200,7 +216,7 @@ YawaGenerator.prototype.writeIndex = function writeIndex() {
 		this.indexFile = this.readFileAsString(path.join(this.sourceRoot(), 'index.hbs'));
 		this.indexFile = this.engine(this.indexFile, this);
 
-		if (!this.includeRequireJS && !this.compassBootstrap) {
+		if (!this.includeRequireJS && !this.compassBootstrap && !this.zurbFoundation) {
 
 			//this.layoutFile = this.appendFiles({
 			//	html: this.layoutFile,
@@ -240,21 +256,34 @@ YawaGenerator.prototype.writeIndex = function writeIndex() {
 					'scripts/main.js'
 				]);
 
-			} else if (this.groundworkCSS) {
-				// wire Groundwork plugins
+
+			} else if (this.zurbFoundation) {
+				// wire Foundation plugins
 				this.layoutFile = this.appendScripts(this.layoutFile, 'scripts/plugins.js', [
-					'bower_components/groundwork/js/plugins/jquery-placeholderText.js',
-					'bower_components/groundwork/js/plugins/jquery-responsiveTables.js',
-					'bower_components/groundwork/js/plugins/jquery-responsiveText.js',
-					'bower_components/groundwork/js/plugins/jquery-truncateLines.js',
-					'bower_components/groundwork/js/components/dismissible.js',
-					'bower_components/groundwork/js/components/equalizeColumns.js',
-					'bower_components/groundwork/js/components/forms.js',
-					'bower_components/groundwork/js/components/menus.js',
-					'bower_components/groundwork/js/components/tabs.js',
-					'bower_components/groundwork/js/components/checklists.js',
-					'bower_components/groundwork/js/components/navigation.js'
+					'bower_components/foundation/js/foundation/foundation.js',
+					'bower_components/foundation/js/foundation/foundation.abide.js',
+					'bower_components/foundation/js/foundation/foundation.accordion.js',
+					'bower_components/foundation/js/foundation/foundation.alert.js',
+					'bower_components/foundation/js/foundation/foundation.clearing.js',
+					'bower_components/foundation/js/foundation/foundation.dropdown.js',
+					'bower_components/foundation/js/foundation/foundation.equalizer.js',
+					'bower_components/foundation/js/foundation/foundation.interchange.js',
+					'bower_components/foundation/js/foundation/foundation.joyride.js',
+					'bower_components/foundation/js/foundation/foundation.magellan.js',
+					'bower_components/foundation/js/foundation/foundation.offcanvas.js',
+					'bower_components/foundation/js/foundation/foundation.orbit.js',
+					'bower_components/foundation/js/foundation/foundation.reveal.js',
+					'bower_components/foundation/js/foundation/foundation.slider.js',
+					'bower_components/foundation/js/foundation/foundation.tab.js',
+					'bower_components/foundation/js/foundation/foundation.tooltip.js',
+					'bower_components/foundation/js/foundation/foundation.topbar.js'
 				]);
+				this.layoutFile = this.appendScripts(this.layoutFile, 'scripts/main.js', [
+					'scripts/styleguide.js',
+					'scripts/main.js'
+				]);
+
+				this.template('main-foundation.js', 'app/scripts/main.js');
 			}
 		}
 	} else {
@@ -262,10 +291,6 @@ YawaGenerator.prototype.writeIndex = function writeIndex() {
 		this.indexFile = this.engine(this.indexFile, this);
 
 		if (!this.includeRequireJS) {
-			this.layoutFile = this.appendScripts(this.layoutFile, 'scripts/main.js', [
-				'scripts/styleguide.js',
-				'scripts/main.js'
-			]);
 
 			//this.indexFile = this.appendFiles({
 			//	html: this.indexFile,
@@ -293,25 +318,33 @@ YawaGenerator.prototype.writeIndex = function writeIndex() {
 					'bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js',
 					'bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js'
 				]);
-			} else if (this.groundworkCSS) {
+			} else if (this.zurbFoundation) {
 				// wire Groundwork plugins
 				this.indexFile = this.appendScripts(this.indexFile, 'scripts/plugins.js', [
-					'bower_components/groundwork/js/plugins/jquery-responsiveTables.js',
-					'bower_components/groundwork/js/plugins/jquery-responsiveText.js',
-					'bower_components/groundwork/js/plugins/jquery-tooltip.js',
-					'bower_components/groundwork/js/plugins/jquery-truncateLines.js',
-					'bower_components/groundwork/js/components/disabled.js',
-					'bower_components/groundwork/js/components/dismissible.js',
-					'bower_components/groundwork/js/components/equalizeColumns.js',
-					'bower_components/groundwork/js/components/forms.js',
-					'bower_components/groundwork/js/components/menus.js',
-					'bower_components/groundwork/js/components/modals.js',
-					'bower_components/groundwork/js/components/pagination.js',
-					'bower_components/groundwork/js/components/tabs.js',
-					'bower_components/groundwork/js/components/tiles.js',
-					'bower_components/groundwork/js/components/tooltips.js'
+					'bower_components/foundation/js/vendor/modernizr.js',
+					'bower_components/foundation/js/foundation/foundation.abide.js',
+					'bower_components/foundation/js/foundation/foundation.accordion.js',
+					'bower_components/foundation/js/foundation/foundation.alert.js',
+					'bower_components/foundation/js/foundation/foundation.clearing.js',
+					'bower_components/foundation/js/foundation/foundation.dropdown.js',
+					'bower_components/foundation/js/foundation/foundation.equalizer.js',
+					'bower_components/foundation/js/foundation/foundation.interchange.js',
+					'bower_components/foundation/js/foundation/foundation.joyride.js',
+					'bower_components/foundation/js/foundation/foundation.magellan.js',
+					'bower_components/foundation/js/foundation/foundation.offcanvas.js',
+					'bower_components/foundation/js/foundation/foundation.orbit.js',
+					'bower_components/foundation/js/foundation/foundation.reveal.js',
+					'bower_components/foundation/js/foundation/foundation.slider.js',
+					'bower_components/foundation/js/foundation/foundation.tab.js',
+					'bower_components/foundation/js/foundation/foundation.tooltip.js',
+					'bower_components/foundation/js/foundation/foundation.topbar.js'
 				]);
 			}
+
+			this.layoutFile = this.appendScripts(this.layoutFile, 'scripts/main.js', [
+				'scripts/styleguide.js',
+				'scripts/main.js'
+			]);
 		}
 	}
 };
@@ -357,7 +390,7 @@ YawaGenerator.prototype.app = function app() {
 		this.write('app/index.html', this.indexFile);
 	}
 	this.write('app/scripts/hello.coffee', this.mainCoffeeFile);
-	if (!this.includeRequireJS) {
+	if (!this.includeRequireJS && !this.zurbFoundation) {
 		this.write('app/scripts/main.js', 'console.log(\'\\\'Allo \\\'Allo!\');');
 	}
 };

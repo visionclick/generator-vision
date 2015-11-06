@@ -122,9 +122,9 @@ module.exports = function (grunt) {
                     src: '{,*/}*.coffee',
                     dest: '.tmp/scripts',
                     ext: '.js'
-                }<% if (groundworkCSS) { %>, {
+                }<% if (zurbFoundation) { %>, {
                     expand: true,
-                    cwd: '<%%= yeoman.app %>/bower_components/groundwork/src/coffee',
+                    cwd: '<%%= yeoman.app %>/bower_components/foundation/src/coffee', /// TODO: cwd
                     src: '{,*/}*.coffee',
                     dest: '.tmp/scripts',
                     ext: '.js'
@@ -148,7 +148,7 @@ module.exports = function (grunt) {
                 imagesDir: '<%%= yeoman.app %>/images',
                 javascriptsDir: '<%%= yeoman.app %>/scripts',
                 fontsDir: '<%%= yeoman.app %>/fonts',
-                importPath:<% if (compassBootstrap) { %>['<%%= yeoman.app %>/bower_components/','<%%= yeoman.app %>/bower_components/bootstrap-sass/assets/stylesheets/'],<% } else { %>'app/bower_components/',<% } %>
+                importPath: <% if (compassBootstrap) { %>['<%%= yeoman.app %>/bower_components/','<%%= yeoman.app %>/bower_components/bootstrap-sass/assets/stylesheets/'],<% }%><% if (zurbFoundation) { %>['<%%= yeoman.app %>/bower_components/','<%%= yeoman.app %>/bower_components/foundation/scss/'],<% } else { %>['app/bower_components/'],<% } %>
                 httpImagesPath: '/images',
                 httpGeneratedImagesPath: '/images/generated',
                 httpFontsPath: '/fonts',
@@ -345,10 +345,12 @@ module.exports = function (grunt) {
                         '*.{ico,png,txt}',
                         '.htaccess',
                         'images/{,*/}*.{webp,gif}',
-                        'fonts/{,*/}*.*'<% if (groundworkCSS) { %>,
-                        'bower_components/groundwork/fonts/**',
-                        'bower_components/groundwork/images/**',
-                        'bower_components/groundwork/js/libs/**'<% } %>
+                        'fonts/{,*/}*.*'<% if (zurbFoundation) { %>
+						//,
+                        //'bower_components/foundation/scss/',
+                        //'bower_components/foundation/scss/',
+                        //'bower_components/foundation/scss/'
+                        <% } %>
                     ]
                 }]
             },

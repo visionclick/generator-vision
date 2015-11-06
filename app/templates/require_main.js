@@ -12,7 +12,7 @@ require.config({
         bootstrapScrollspy: '../bower_components/sass-bootstrap/js/scrollspy',
         bootstrapTab: '../bower_components/sass-bootstrap/js/tab',
         bootstrapTooltip: '../bower_components/sass-bootstrap/js/tooltip',
-        bootstrapTransition: '../bower_components/sass-bootstrap/js/transition'<% } else if (groundworkCSS) { %>,
+        bootstrapTransition: '../bower_components/sass-bootstrap/js/transition'<% } else if (zurbFoundation) { %>,
         jqueryPlaceholderText: '../../.tmp/scripts/plugins/jquery-placeholderText',
         jqueryResponsiveTables: '../../.tmp/scripts/plugins/jquery-responsiveTables',
         jqueryResponsiveText: '../../.tmp/scripts/plugins/jquery-responsiveText',
@@ -24,7 +24,7 @@ require.config({
         groundworkMenus: '../../.tmp/scripts/components/menus',
         groundworkNavigation: '../../.tmp/scripts/components/navigation',
         groundworkTabs: '../../.tmp/scripts/components/tabs'<% } %>
-    }<% if (compassBootstrap || groundworkCSS) { %>,
+    }<% if (compassBootstrap || zurbFoundation) { %>,
     shim: {<% if (compassBootstrap) { %>
         bootstrapAffix: {
             deps: ['jquery']
@@ -61,7 +61,7 @@ require.config({
         },
         bootstrapTransition: {
             deps: ['jquery']
-        }<% } else if (groundworkCSS) { %>
+        }<% } else if (zurbFoundation) { %>
         jqueryPlaceholderText: {
             deps: ['jquery']
         },
@@ -100,7 +100,7 @@ require.config({
 
 require([
         'app',
-        'jquery'<% if (groundworkCSS) { %>,
+        'jquery'<% if (zurbFoundation) { %>,
         'jqueryPlaceholderText',
         'jqueryResponsiveTables',
         'jqueryResponsiveText',
