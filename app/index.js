@@ -56,7 +56,7 @@ YawaGenerator.prototype.askFor = function askFor() {
 			name: 'Bootstrap 4',
 			value: 'bootstrap'
 		}, {
-			name: 'Foundation 5',
+			name: 'Foundation 6',
 			value: 'foundation'
 		}, {
 			name: 'None',
@@ -141,17 +141,6 @@ YawaGenerator.prototype.editorConfig = function editorConfig() {
 	this.copy('editorconfig', '.editorconfig');
 };
 
-YawaGenerator.prototype.h5bp = function h5bp() {
-	this.copy('favicon.ico', 'app/favicon.ico');
-	if (this.includeAssemble) {
-		this.copy('404.hbs', 'app/templates/pages/404.hbs');
-		// this.copy('layout.hbs', 'app/templates/layouts/default.hbs');
-		// this.copy('index.hbs', 'app/templates/pages/index.hbs');
-	} else {
-		this.copy('404.html', 'app/404.html');
-	}
-	this.copy('robots.txt', 'app/robots.txt');
-};
 
 YawaGenerator.prototype.mainStylesheet = function mainStylesheet() {
 	if (this.compassBootstrap) {
@@ -160,7 +149,6 @@ YawaGenerator.prototype.mainStylesheet = function mainStylesheet() {
 		this.copy('_textures.scss', 'app/styles/_textures.scss');
 		this.copy('_vars.scss', 'app/styles/_vars.scss');
 
-		this.copy('_flex.scss', 'app/styles/lib/_flex.scss');
 		this.copy('_animations.scss', 'app/styles/lib/_animations.scss');
 		this.copy('_placeholders.scss', 'app/styles/lib/_placeholders.scss');
 		this.copy('_mixins.scss', 'app/styles/lib/_mixins.scss');
@@ -178,7 +166,6 @@ YawaGenerator.prototype.mainStylesheet = function mainStylesheet() {
 		this.copy('_textures.scss', 'app/styles/_textures.scss');
 		this.copy('_vars.scss', 'app/styles/_vars.scss');
 
-		this.copy('_flex.scss', 'app/styles/lib/_flex.scss');
 		this.copy('_animations.scss', 'app/styles/lib/_animations.scss');
 		this.copy('_placeholders.scss', 'app/styles/lib/_placeholders.scss');
 		this.copy('_mixins.scss', 'app/styles/lib/_mixins.scss');
@@ -195,7 +182,6 @@ YawaGenerator.prototype.mainStylesheet = function mainStylesheet() {
 		this.copy('_helpers.scss', 'app/styles/_helpers.scss');
 		this.copy('_textures.scss', 'app/styles/_textures.scss');
 
-		this.copy('_flex.scss', 'app/styles/lib/_flex.scss');
 		this.copy('_animations.scss', 'app/styles/lib/_animations.scss');
 		this.copy('_placeholders.scss', 'app/styles/lib/_placeholders.scss');
 		this.copy('_mixins.scss', 'app/styles/lib/_mixins.scss');
@@ -260,23 +246,7 @@ YawaGenerator.prototype.writeIndex = function writeIndex() {
 			} else if (this.zurbFoundation) {
 				// wire Foundation plugins
 				this.layoutFile = this.appendScripts(this.layoutFile, 'scripts/plugins.js', [
-					'bower_components/foundation/js/foundation/foundation.js',
-					'bower_components/foundation/js/foundation/foundation.abide.js',
-					'bower_components/foundation/js/foundation/foundation.accordion.js',
-					'bower_components/foundation/js/foundation/foundation.alert.js',
-					'bower_components/foundation/js/foundation/foundation.clearing.js',
-					'bower_components/foundation/js/foundation/foundation.dropdown.js',
-					'bower_components/foundation/js/foundation/foundation.equalizer.js',
-					'bower_components/foundation/js/foundation/foundation.interchange.js',
-					'bower_components/foundation/js/foundation/foundation.joyride.js',
-					'bower_components/foundation/js/foundation/foundation.magellan.js',
-					'bower_components/foundation/js/foundation/foundation.offcanvas.js',
-					'bower_components/foundation/js/foundation/foundation.orbit.js',
-					'bower_components/foundation/js/foundation/foundation.reveal.js',
-					'bower_components/foundation/js/foundation/foundation.slider.js',
-					'bower_components/foundation/js/foundation/foundation.tab.js',
-					'bower_components/foundation/js/foundation/foundation.tooltip.js',
-					'bower_components/foundation/js/foundation/foundation.topbar.js'
+
 				]);
 				this.layoutFile = this.appendScripts(this.layoutFile, 'scripts/main.js', [
 					'scripts/styleguide.js',
@@ -321,23 +291,7 @@ YawaGenerator.prototype.writeIndex = function writeIndex() {
 			} else if (this.zurbFoundation) {
 				// wire Groundwork plugins
 				this.indexFile = this.appendScripts(this.indexFile, 'scripts/plugins.js', [
-					'bower_components/foundation/js/vendor/modernizr.js',
-					'bower_components/foundation/js/foundation/foundation.abide.js',
-					'bower_components/foundation/js/foundation/foundation.accordion.js',
-					'bower_components/foundation/js/foundation/foundation.alert.js',
-					'bower_components/foundation/js/foundation/foundation.clearing.js',
-					'bower_components/foundation/js/foundation/foundation.dropdown.js',
-					'bower_components/foundation/js/foundation/foundation.equalizer.js',
-					'bower_components/foundation/js/foundation/foundation.interchange.js',
-					'bower_components/foundation/js/foundation/foundation.joyride.js',
-					'bower_components/foundation/js/foundation/foundation.magellan.js',
-					'bower_components/foundation/js/foundation/foundation.offcanvas.js',
-					'bower_components/foundation/js/foundation/foundation.orbit.js',
-					'bower_components/foundation/js/foundation/foundation.reveal.js',
-					'bower_components/foundation/js/foundation/foundation.slider.js',
-					'bower_components/foundation/js/foundation/foundation.tab.js',
-					'bower_components/foundation/js/foundation/foundation.tooltip.js',
-					'bower_components/foundation/js/foundation/foundation.topbar.js'
+
 				]);
 			}
 
