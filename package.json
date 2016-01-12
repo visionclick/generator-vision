@@ -1,6 +1,6 @@
 {
   "name": "generator-vision",
-  "version": "1.0.0",
+  "version": "1.2.2",
   "description": "Scaffold out a front-end",
   "keywords": [
     "yeoman-generator",
