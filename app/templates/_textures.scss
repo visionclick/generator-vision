@@ -12,40 +12,48 @@ html, body {
 /// BACKGROUND COLORS
 
 .bg--primary {
-	background-color: $brand-primary !important;
+	background-color: $primary-color !important;
+}
+
+.bg--secondary{
+	background-color: $secondary-color;
+}
+
+.bg--success{
+	background-color: $success-color;
+}
+
+.bg--warning{
+	background-color: $warning-color;
+}
+
+.bg--alert{
+	background-color: $alert-color;
 }
 
 .bg--white {
 	background-color: white !important;
 }
 
-.bg--info {
-	background-color: $brand-info !important;
-}
-
-.bg--warning {
-	background-color: $brand-warning !important;
-}
-
-.bg--danger {
-	background-color: $brand-danger !important;
+.bg--grey {
+	background-color: #dddddd !important;
 }
 
 
 /// BORDERS
 
 .border--primary {
-	border: 1px solid $border-color;
+	border: 1px solid $light-gray;
 }
 
 .border-sides--primary {
-	border-left: 1px solid $border-color;
-	border-right: 1px solid $border-color;
+	border-left: 1px solid $light-gray;
+	border-right: 1px solid $light-gray;
 }
 
 .border-ends--primary {
-	border-top: 1px solid $border-color;
-	border-bottom: 1px solid $border-color;
+	border-top: 1px solid $light-gray;
+	border-bottom: 1px solid $light-gray;
 }
 
 

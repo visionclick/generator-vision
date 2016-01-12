@@ -1,13 +1,15 @@
 
-// Foundation for Sites by ZURB
-// foundation.zurb.com
-// Licensed under MIT Open Source
+@import "vars";
 
-// Third-party libraries
+/**
+ * Foundation for Sites by ZURB
+ * Version 6.1.1
+ * foundation.zurb.com
+ * Licensed under MIT Open Source
+ */
 
 // Sass utilities
 @import 'util/util';
-@import 'vars';
 
 // Global variables and styles
 @import 'global';
@@ -48,14 +50,14 @@
 @import 'components/thumbnail';
 @import 'components/tooltip';
 
-// These styles are applied to <meta> tags, which are read by the Foundation JavaScript
-.foundation-mq {
-	font-family: "#{-zf-bp-serialize($breakpoints)}";
-}
-
-@mixin foundation-everything {
+@mixin foundation-everything($flex: false) {
 	@include foundation-global-styles;
-	@include foundation-grid;
+	@if not $flex {
+		@include foundation-grid;
+	}
+	@else {
+		@include foundation-flex-grid;
+	}
 	@include foundation-typography;
 	@include foundation-button;
 	@include foundation-forms;

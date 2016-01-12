@@ -503,7 +503,8 @@ module.exports = function (grunt) {
 			'copy:scripts',<% } %><% if (includeAssemble) { %>
 			'assemble',<% } %>
 			'compass:server',
-			'bless:server',
+			//bless:server',
+			'postcss',
 			'browserSync',
 			'watch'
         ]);
