@@ -3,5 +3,84 @@
 /// VARIABLES
 
 
+
+/// VARIABLES
+
+$global-font-size: 100% !default;
+
+$global-lineheight: 1.5 !default;
+
+
+/// COLORS
+
+$primary-color: #2199e8;
+
+$secondary-color: #777;
+
+$success-color: #3adb76;
+
+$warning-color: #ffae00;
+
+$alert-color: #ec5840;
+
+$light-gray: #e6e6e6;
+
+$medium-gray: #cacaca;
+
+$dark-gray: #8a8a8a;
+
+$black: #0a0a0a !default;
+
+$white: #fefefe !default;
+
+$body-background: $white !default;
+
+$body-font-color: $black !default;
+
+$border-color: $medium-gray;
+
+
+/// SPACING
+
 $grid-gutter-width: 30px;
+
+$grid-column-responsive-gutter: (
+	small: 20px,
+	medium: 30px,
+) !default;
+
+$global-margin: 1rem !default;
+
+$global-padding: 1rem !default;
+
+
+/// TEXT
+
+$body-font-color: $black !default;
+
+$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+
+$global-weight-normal: normal !default;
+
+$global-weight-bold: bold !default;
+
+
+
+/*
+
+@include breakpoint(small){
+
+}
+
+
+@include breakpoint(medium){
+
+}
+
+
+@include breakpoint(large){
+
+}
+
+*/
 

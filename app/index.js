@@ -154,6 +154,7 @@ YawaGenerator.prototype.mainStylesheet = function mainStylesheet() {
 		this.copy('_mixins.scss', 'app/styles/lib/_mixins.scss');
 
 		this.copy('_broswehappy.scss', 'app/styles/components/_browsehappy.scss');
+		this.copy('_cookieconsent.scss', 'app/styles/components/_cookieconsent.scss');
 		this.copy('_styleguide.scss', 'app/styles/pages/_styleguide.scss');
 		this.copy('_shame.scss', 'app/styles/_shame.scss');
 
@@ -171,6 +172,7 @@ YawaGenerator.prototype.mainStylesheet = function mainStylesheet() {
 		this.copy('_mixins.scss', 'app/styles/lib/_mixins.scss');
 
 		this.copy('_broswehappy.scss', 'app/styles/components/_browsehappy.scss');
+		this.copy('_cookieconsent.scss', 'app/styles/components/_cookieconsent.scss');
 		this.copy('_styleguide.scss', 'app/styles/pages/_styleguide.scss');
 		this.copy('_shame.scss', 'app/styles/_shame.scss');
 
@@ -187,6 +189,7 @@ YawaGenerator.prototype.mainStylesheet = function mainStylesheet() {
 		this.copy('_mixins.scss', 'app/styles/lib/_mixins.scss');
 
 		this.copy('_broswehappy.scss', 'app/styles/components/_browsehappy.scss');
+		this.copy('_cookieconsent.scss', 'app/styles/components/_cookieconsent.scss');
 		this.copy('_styleguide.scss', 'app/styles/pages/_styleguide.scss');
 		this.copy('_shame.scss', 'app/styles/_shame.scss');
 
