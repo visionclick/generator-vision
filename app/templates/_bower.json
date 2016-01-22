@@ -5,14 +5,14 @@
 		if (compassBootstrap) { %>
 			"bootstrap-sass": "~3.3.4", <%
 		} %><%if (zurbFoundation) { %>
-			"foundation-sites": "~6.0.5", <%
+			"foundation-sites": "~6.1.1", <%
 		} %><%if (includeRequireJS) { %>
-			"requirejs": "^2.1.8", <%
+			"requirejs": "~2.1.8", <%
 		} %> <%
 		if (includeModernizr) { %>
 			"modernizr": "^2.6.2", <%
 		} %>
-			"jquery": "^1.10.2",
+			"jquery": "^2.1.4",
 			"lt-ie-9": "~0.1.0",
 			"cookieconsent2": "~1.0.4"
 		},
