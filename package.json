@@ -1,6 +1,6 @@
 {
   "name": "generator-vision",
-  "version": "1.3.2",
+  "version": "2.0.0",
   "description": "Scaffold out a front-end",
   "keywords": [
     "yeoman-generator",
@@ -20,11 +20,13 @@
     "email": "josecarlos@visionclick.es",
     "twitter": "@jcarlosweb"
   },
-  "contributors": [{
-    "name": "Pablo Crossa",
-    "email": "maquetacion@visionclick.es",
-    "twitter": "@Pablocrs"
-  }],
+  "contributors": [
+    {
+      "name": "Pablo Crossa",
+      "email": "maquetacion@visionclick.es",
+      "twitter": "@Pablocrs"
+    }
+  ],
   "main": "app/index.js",
   "repository": {
     "type": "git",
